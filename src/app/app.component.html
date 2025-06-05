@@ -1,0 +1,35 @@
+<div class="map-container">
+  <agm-map 
+    [latitude]="lat" 
+    [longitude]="lng"
+    [zoom]="zoom"
+    style="height: 600px; width: 100%;">
+    
+    <!-- Markers with Info Windows -->
+    <agm-marker 
+      *ngFor="let marker of markers"
+      [latitude]="marker.lat"
+      [longitude]="marker.lng"
+      [label]="marker.label"
+      [title]="marker.title">
+      
+      <agm-info-window [disableAutoPan]="false">
+        <div class="info-window-content">
+          <h3>{{marker.title}}</h3>
+          <p>Location: {{marker.lat}}, {{marker.lng}}</p>
+        </div>
+      </agm-info-window>
+    </agm-marker>
+
+    <!-- Polygon -->
+    <agm-polygon
+      [paths]="polygon"
+      [strokeColor]="'#FF0000'"
+      [strokeOpacity]="0.8"
+      [strokeWeight]="2"
+      [fillColor]="'#FF0000'"
+      [fillOpacity]="0.35">
+    </agm-polygon>
+
+  </agm-map>
+</div>
