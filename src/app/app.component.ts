@@ -10,6 +10,7 @@ import {
   AgmInfoWindow,
   MapsAPILoader,
 } from '@babluroy/agm-core';
+import { AgmDrawingManager } from '@babluroy/agm-drawing';
 import { environment } from '../environments/environment';
 
 @Component({
@@ -21,7 +22,8 @@ import { environment } from '../environments/environment';
     AgmMap,
     AgmMarker,
     AgmPolygon,
-    AgmInfoWindow
+    AgmInfoWindow,
+    AgmDrawingManager
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
@@ -74,4 +76,13 @@ export class AppComponent {
     padding: '15px',
     boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
   };
+
+  drawingControlOptions = {
+    drawingModes: ['polygon', 'circle', 'rectangle'],
+    position: 2 // TOP_CENTER (google.maps.ControlPosition.TOP_CENTER)
+  };
+
+  onPolygonComplete(event: any) {
+    console.log('Polygon completed:', event);
+  }
 }

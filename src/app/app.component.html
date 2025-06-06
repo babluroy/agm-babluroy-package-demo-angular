@@ -3,8 +3,11 @@
     [latitude]="lat" 
     [longitude]="lng"
     [zoom]="zoom"
-    style="height: 600px; width: 100%;">
+    [apiKey]="apiKey"
+    class="map">
     
+ 
+
     <!-- Markers with Info Windows -->
     <agm-marker 
       *ngFor="let marker of markers"
@@ -32,4 +35,10 @@
     </agm-polygon>
 
   </agm-map>
-</div>
+     <!-- Drawing Manager -->
+    <agm-drawing-manager
+      [drawingControl]="true"
+      [drawingControlOptions]="$any(drawingControlOptions)"
+      (polygonComplete)="onPolygonComplete($event)">
+    </agm-drawing-manager>
+    Screenshot 2025-06-06 at 6.51.11 PM.png</div>
