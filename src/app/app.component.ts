@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgFor } from '@angular/common';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { 
   AgmCoreModule, 
   AgmMap, 
   AgmMarker,
   AgmPolygon,
   AgmInfoWindow,
-  MapsAPILoader 
+  MapsAPILoader,
 } from '@babluroy/agm-core';
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -16,12 +18,12 @@ import {
   imports: [
     RouterOutlet,
     NgFor,
-    AgmCoreModule, 
     AgmMap,
     AgmMarker,
     AgmPolygon,
     AgmInfoWindow
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: MapsAPILoader,
@@ -38,6 +40,7 @@ export class AppComponent {
   lat = 51.678418;
   lng = 7.809007;
   zoom = 8;
+  apiKey = environment.googleMapsApiKey;
 
   // Dummy data for markers
   markers = [
